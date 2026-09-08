@@ -3,9 +3,13 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
 
-// Placeholder Pages (will be created in Milestones 5, 6, 7)
+// Pages
+import Register from './pages/Register';
+import Login from './pages/Login';
+
+// Placeholder Pages (will be replaced in Milestones 6 & 7)
 const Placeholder = ({ title }) => (
-  <div className="max-w-7xl mx-auto px-4 py-12 text-center">
+  <div className="max-w-7xl mx-auto px-4 py-16 text-center">
     <h1 className="text-3xl font-bold text-gray-800">{title}</h1>
     <p className="mt-2 text-gray-600">This view will be linked in the next milestone.</p>
   </div>
@@ -19,8 +23,8 @@ function App() {
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<Placeholder title="Event Discovery Feed (Milestone 6)" />} />
-          <Route path="/login" element={<Placeholder title="Login Page (Milestone 5)" />} />
-          <Route path="/register" element={<Placeholder title="Register Page (Milestone 5)" />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
 
           {/* Customer Protected Routes */}
           <Route

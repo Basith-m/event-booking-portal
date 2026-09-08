@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import API from '../api/axios';
 import BookingModal from '../components/BookingModal';
-import { formatDate, formatCurrency, getCategoryBanner } from '../utils/formatters';
+import { formatDate, formatCurrency, getEventImage } from '../utils/formatters';
 import {
   Search,
   X,
@@ -209,7 +209,7 @@ const Home = () => {
                   <div>
                     <div className="relative w-full h-44 rounded-2xl overflow-hidden mb-4 bg-slate-100">
                       <img
-                        src={getCategoryBanner(event.category)}
+                        src={getEventImage(event)}
                         alt={event.title}
                         className={`w-full h-full object-cover transition-transform duration-300 ${
                           isSoldOut ? 'grayscale contrast-75' : 'group-hover:scale-105'

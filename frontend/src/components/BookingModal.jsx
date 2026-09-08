@@ -1,6 +1,6 @@
 import React, { useState, useEffect  } from 'react';
 import { X, Calendar, MapPin, Plus, Minus, Loader2, CheckCircle2 } from 'lucide-react';
-import { formatDate, formatCurrency, getCategoryBanner } from '../utils/formatters';
+import { formatDate, formatCurrency, getEventImage } from '../utils/formatters';
 import API from '../api/axios';
 import toast from 'react-hot-toast';
 
@@ -67,7 +67,7 @@ const BookingModal = ({ event, isOpen, onClose, onSuccess }) => {
         {/* Modal Banner Header (Compact & Responsive) */}
         <div className="relative w-full h-28 sm:h-36 shrink-0 overflow-hidden bg-slate-900">
           <img
-            src={getCategoryBanner(event.category)}
+            src={getEventImage(event)}
             alt={event.title}
             className="w-full h-full object-cover opacity-80"
           />

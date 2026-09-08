@@ -24,6 +24,7 @@ const CreateEvent = () => {
     title: '',
     description: '',
     category: '',
+    imageUrl: '',
     date: '',
     location: '',
     ticketPrice: '',
@@ -68,6 +69,7 @@ const CreateEvent = () => {
         title: formData.title.trim(),
         description: formData.description.trim(),
         category: formData.category,
+        imageUrl: formData.imageUrl.trim(),
         date: eventDate.toISOString(),
         location: formData.location.trim(),
         ticketPrice: Number(formData.ticketPrice),
@@ -174,6 +176,24 @@ const CreateEvent = () => {
                 </select>
                 <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
               </div>
+            </div>
+
+            {/* Optional Image URL Input */}
+            <div className="space-y-1.5">
+            <div className="flex items-center justify-between">
+                <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider">
+                Cover Image URL <span className="text-xs font-normal text-slate-400 lowercase">(optional)</span>
+                </label>
+                <span className="text-[11px] text-slate-400">Leave blank for automatic category cover</span>
+            </div>
+            <input
+                type="url"
+                name="imageUrl"
+                value={formData.imageUrl}
+                onChange={handleChange}
+                placeholder="https://images.unsplash.com/your-custom-image.jpg"
+                className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:bg-white transition"
+            />
             </div>
           </div>
 

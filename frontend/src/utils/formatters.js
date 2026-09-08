@@ -36,3 +36,10 @@ export const getCategoryBanner = (category) => {
       return 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80';
   }
 };
+
+export const getEventImage = (event) => {
+  if (event?.imageUrl && event.imageUrl.trim() !== '') {
+    return event.imageUrl;
+  }
+  return getCategoryBanner(event?.category);
+};

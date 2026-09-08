@@ -20,6 +20,11 @@ const eventSchema = new mongoose.Schema(
         message: '{VALUE} is not a supported category',
       },
     },
+    imageUrl: {
+      type: String,
+      default: '',
+      trim: true,
+    },
     date: {
       type: Date,
       required: [true, 'Event date is required'],

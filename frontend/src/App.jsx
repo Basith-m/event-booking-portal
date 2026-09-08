@@ -4,8 +4,10 @@ import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
 
 // Pages
-import Register from './pages/Register';
+import Home from './pages/Home';
 import Login from './pages/Login';
+import Register from './pages/Register';
+import MyBookings from './pages/MyBookings';
 
 // Placeholder Pages (will be replaced in Milestones 6 & 7)
 const Placeholder = ({ title }) => (
@@ -22,7 +24,7 @@ function App() {
       <main className="flex-1">
         <Routes>
           {/* Public Routes */}
-          <Route path="/" element={<Placeholder title="Event Discovery Feed (Milestone 6)" />} />
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
@@ -31,7 +33,7 @@ function App() {
             path="/my-bookings"
             element={
               <ProtectedRoute allowedRoles={['CUSTOMER']}>
-                <Placeholder title="Customer Bookings (Milestone 6)" />
+                <MyBookings />
               </ProtectedRoute>
             }
           />

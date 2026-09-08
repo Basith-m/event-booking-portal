@@ -8,14 +8,8 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import MyBookings from './pages/MyBookings';
-
-// Placeholder Pages (will be replaced in Milestones 6 & 7)
-const Placeholder = ({ title }) => (
-  <div className="max-w-7xl mx-auto px-4 py-16 text-center">
-    <h1 className="text-3xl font-bold text-gray-800">{title}</h1>
-    <p className="mt-2 text-gray-600">This view will be linked in the next milestone.</p>
-  </div>
-);
+import OrganizerDashboard from './pages/OrganizerDashboard';
+import CreateEvent from './pages/CreateEvent';
 
 function App() {
   return (
@@ -43,7 +37,7 @@ function App() {
             path="/organizer/dashboard"
             element={
               <ProtectedRoute allowedRoles={['ORGANIZER']}>
-                <Placeholder title="Organizer Dashboard (Milestone 7)" />
+                <OrganizerDashboard />
               </ProtectedRoute>
             }
           />
@@ -51,7 +45,7 @@ function App() {
             path="/organizer/create-event"
             element={
               <ProtectedRoute allowedRoles={['ORGANIZER']}>
-                <Placeholder title="Create Event Form (Milestone 7)" />
+                <CreateEvent />
               </ProtectedRoute>
             }
           />

@@ -4,6 +4,12 @@ import cors from 'cors';
 import morgan from 'morgan';
 import connectDB from './config/db.js';
 
+// Route imports
+import authRoutes from './routes/authRoutes.js';
+
+// Middleware imports
+import { notFound, errorHandler } from './middleware/errorMiddleware.js';
+
 dotenv.config();
 
 const app = express();
@@ -42,6 +48,13 @@ app.get('/api/health', (req, res) => {
     timestamp: new Date().toISOString(),
   });
 });
+
+// Mount Routes
+app.use('/api/auth', authRoutes);
+
+// Error Handling Middlewares
+app.use(notFound);
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 

@@ -16,6 +16,8 @@ import toast from 'react-hot-toast';
 
 const CATEGORIES = ['Music', 'Tech', 'Workshop', 'Sports', 'Other'];
 
+const minDateTime = new Date().toISOString().slice(0, 16);
+
 const CreateEvent = () => {
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -61,6 +63,10 @@ const CreateEvent = () => {
     const eventDate = new Date(formData.date);
     if (isNaN(eventDate.getTime())) {
       return toast.error('Please provide a valid date');
+    }
+
+    if (eventDate <= new Date()) {
+      return toast.error('Event date and time must be set in the future');
     }
 
     try {
@@ -218,6 +224,7 @@ const CreateEvent = () => {
                 <input
                   type="datetime-local"
                   name="date"
+                  min={minDateTime}
                   value={formData.date}
                   onChange={handleChange}
                   required

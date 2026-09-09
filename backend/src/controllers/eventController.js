@@ -7,7 +7,11 @@ import Booking from '../models/Booking.js';
 export const getEvents = async (req, res, next) => {
   try {
     const { category, search } = req.query;
-    const filter = {};
+    
+    // Only return upcoming events (date is in the future or today)
+    const filter = {
+      date: { $gte: new Date() },
+    };
 
     // Category filter
     if (category && category.trim() !== '') {

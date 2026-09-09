@@ -178,6 +178,7 @@ const OrganizerDashboard = () => {
                       <th className="py-4 px-6">Event Title</th>
                       <th className="py-4 px-4">Category</th>
                       <th className="py-4 px-4">Date</th>
+                      <th className="py-4 px-4">Status</th>
                       <th className="py-4 px-4">Location</th>
                       <th className="py-4 px-4 text-right">Capacity</th>
                       <th className="py-4 px-4 text-right">Sold</th>
@@ -199,6 +200,17 @@ const OrganizerDashboard = () => {
                         </td>
                         <td className="py-4 px-4 text-xs text-slate-600">
                           {formatDate(event.date)}
+                        </td>
+                        <td className="py-4 px-4">
+                          {new Date(event.date) < new Date() ? (
+                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-500">
+                              Ended
+                            </span>
+                          ) : (
+                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700">
+                              Active
+                            </span>
+                          )}
                         </td>
                         <td className="py-4 px-4 text-xs text-slate-600 truncate max-w-[150px]">
                           {event.location}

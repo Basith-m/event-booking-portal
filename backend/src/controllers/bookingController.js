@@ -15,11 +15,12 @@ export const bookTickets = async (req, res, next) => {
       throw new Error('Please specify a valid number of tickets (min 1)');
     }
 
-    // 1. ATOMIC OPERATION: Decrement availableTickets ONLY if availableTickets >= requestedTickets
+    // 1. ATOMIC OPERATION: Decrement availableTickets ONLY if availableTickets >= requestedTickets AND date is in the future
     const updatedEvent = await Event.findOneAndUpdate(
       {
         _id: eventId,
         availableTickets: { $gte: requestedTickets },
+        date: { $gte: new Date() }, // Prevents booking expired events
       },
       {
         $inc: { availableTickets: -requestedTickets },
@@ -33,6 +34,11 @@ export const bookTickets = async (req, res, next) => {
       if (!eventExists) {
         res.status(404);
         throw new Error('Event not found');
+      }
+
+      if (new Date(eventExists.date) <= new Date()) {
+        res.status(400);
+        throw new Error('Cannot book tickets for an event that has already ended');
       }
 
       res.status(400);
